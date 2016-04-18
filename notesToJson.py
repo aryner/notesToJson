@@ -108,13 +108,17 @@ def getLines(name):
   f.close()
   return lines
 
-if __name__ == '__main__':
-  lines = getLines(sys.argv[1])
-
+def transformToJson(lines):
   data = {}
   index = 0
   while index < len(lines)-1:
     index = switch(lines,index,data)
+
+  return data
+
+if __name__ == '__main__':
+  lines = getLines(sys.argv[1])
+  data = transformToJson(lines)
 
   print(data)
 
